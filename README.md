@@ -26,15 +26,6 @@ Este projeto é um laboratório prático de autenticação avançada desenvolvid
 *   **Django Allauth** (Social Auth & Account Management)
 *   **Bootstrap 5** (Customizado via CSS puro)
 *   **Mailtrap** (Ambiente de testes SMTP)
-
----
-
-## 📸 Screenshots
-
-| Login Premium | Feed Estilo Rede Social | E-mail de Recuperação |
-| :---: | :---: | :---: |
-| ![Login](https://raw.githubusercontent.com/DouglasScarello/django-auth-lab-oauth2/main/screenshots/login.png) | ![Home](https://raw.githubusercontent.com/DouglasScarello/django-auth-lab-oauth2/main/screenshots/home.png) | ![Email](https://raw.githubusercontent.com/DouglasScarello/django-auth-lab-oauth2/main/screenshots/email.png) |
-
 ---
 
 ## ⚙️ Como Rodar o Projeto
