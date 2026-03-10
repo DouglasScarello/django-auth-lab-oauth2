@@ -1,0 +1,81 @@
+{% extends "core/base.html" %}
+
+{% block title %}Novo Post - Django Lab{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="glass-card p-5 shadow-lg overflow-hidden position-relative">
+            <!-- Decorative Gradient -->
+            <div class="position-absolute top-0 start-0 w-100 h-1" style="background: var(--primary-gradient); height: 6px;"></div>
+            
+            <div class="mb-5 text-center">
+                <h1 class="display-6 mb-2">Escrita Criativa</h1>
+                <p class="text-secondary">O seu espaço para compartilhar experimentos, ideias e códigos.</p>
+            </div>
+
+            <form method="post" class="needs-validation">
+                {% csrf_token %}
+                
+                <div class="form-sections">
+                    {% for field in form %}
+                        <div class="mb-5">
+                            <label class="form-label h6 fw-bold mb-3 d-flex align-items-center">
+                                <span class="bg-primary-subtle text-primary rounded-circle d-inline-flex align-items-center justify-content-center me-2" style="width: 28px; height: 28px; font-size: 0.8rem;">
+                                    {{ forloop.counter }}
+                                </span>
+                                {{ field.label }}
+                            </label>
+                            
+                            <div class="input-wrapper position-relative">
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <div class="form-text mt-2 small opacity-75">{{ field.help_text }}</div>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <div class="text-danger small mt-2 fw-semibold">⚠️ {{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mt-5 pt-4 border-top">
+                    <a href="{% url 'home' %}" class="btn btn-link text-secondary text-decoration-none fw-medium">
+                        ← Descartar e voltar
+                    </a>
+                    <button type="submit" class="btn btn-premium px-5 py-3 shadow">
+                        Publicar agora 🚀
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilização agressiva dos widgets do Django no Criar Post */
+    input, textarea {
+        display: block;
+        width: 100%;
+        padding: 1rem 1.25rem;
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--bs-body-color);
+        background-color: var(--bs-tertiary-bg);
+        border: 2px solid var(--bs-border-color);
+        border-radius: 12px;
+        transition: all 0.2s ease-in-out;
+    }
+    input:focus, textarea:focus {
+        border-color: var(--primary-color);
+        outline: 0;
+        background-color: var(--bs-body-bg);
+        box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.15);
+    }
+    textarea {
+        min-height: 180px;
+    }
+</style>
+{% endblock %}

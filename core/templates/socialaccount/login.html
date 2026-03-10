@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card glass-card text-center">
+        {% if process == "connect" %}
+            <h1 class="h2 mb-3">🔗 {% blocktrans with provider.name as provider_name %}Conectar {{ provider_name }}{% endblocktrans %}</h1>
+            <p class="text-secondary mb-5">{% blocktrans with provider.name as provider_name %}Você está prestes a conectar sua conta do {{ provider_name }}.{% endblocktrans %}</p>
+        {% else %}
+            <h1 class="h2 mb-3">🚀 {% blocktrans with provider.name as provider_name %}Entrar via {{ provider_name }}{% endblocktrans %}</h1>
+            <p class="text-secondary mb-5">{% blocktrans with provider.name as provider_name %}Você está prestes a entrar usando sua conta do {{ provider_name }}.{% endblocktrans %}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-3">
+                <button type="submit" class="btn btn-premium btn-lg fs-6">{% trans "Continue" %}</button>
+                <a href="{% url 'account_login' %}" class="btn btn-link text-secondary text-decoration-none small">Cancelar e voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        min-height: calc(100vh - 4rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .auth-card {
+        background: var(--bs-body-bg);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 20px;
+        padding: 3.5rem;
+        width: 100%;
+        max-width: 480px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+</style>
+{% endblock %}

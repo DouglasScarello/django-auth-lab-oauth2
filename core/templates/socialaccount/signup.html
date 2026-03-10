@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card glass-card">
+        <h1 class="h2 mb-3 text-center">✨ Quase lá!</h1>
+        <p class="text-center text-secondary mb-5">{% blocktrans with provider.name as provider_name %}Você está autenticado via {{ provider_name }}. Escolha um nome de usuário para o Lab.{% endblocktrans %}</p>
+
+        <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+            {% csrf_token %}
+            
+            <div class="mb-4">
+                {{ form.as_p }}
+            </div>
+
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-premium btn-lg fs-6">{% trans "Sign Up" %} &raquo;</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        min-height: calc(100vh - 4rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .auth-card {
+        background: var(--bs-body-bg);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 20px;
+        padding: 3rem;
+        width: 100%;
+        max-width: 440px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .auth-card form p input {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        background-color: var(--bs-tertiary-bg);
+        border: 1px solid var(--bs-border-color);
+        margin-bottom: 1rem;
+    }
+    .auth-card form p label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %}
