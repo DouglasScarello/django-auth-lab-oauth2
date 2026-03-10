@@ -1,10 +1,3 @@
-# 🛡️ Django Auth Lab: Oauth2.0 & Secure Flow
-
-![Status](https://img.shields.io/badge/Status-Project_Complete-brightgreen)
-![Django](https://img.shields.io/badge/Framework-Django_6.0-092e20?logo=django)
-![OAuth2](https://img.shields.io/badge/Protocol-OAuth2.0-blue)
-![UI](https://img.shields.io/badge/UI-Premium_Startup_Edge-blueviolet)
-
 Este projeto é um laboratório prático de autenticação avançada desenvolvido para consolidar os aprendizados sobre o protocolo **OAuth2.0**. Ele vai muito além do básico, implementando fluxos de segurança completos com uma interface moderna e responsiva estilo "Startup Software".
 
 ---
